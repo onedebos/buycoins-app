@@ -53,13 +53,16 @@ tbody > tr:nth-child(even) {
   background-color: var(--color-white);
 }
 
+tfoot{
+    background-color: var(--color-grey);
+}
+
 .btn-space{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 .btn{
     color:black;
-    border:none;
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
