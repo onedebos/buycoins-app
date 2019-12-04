@@ -2,6 +2,7 @@ function getUrl(start = 0){
     return 'https://api.coinlore.com/api/tickers/?start=' + start + '&limit=10';
 }
 
+//grab data
 function getData(url){
 
     fetch(url)
@@ -11,6 +12,7 @@ function getData(url){
 
 }
 
+// load data into table
 function loadDataIntoTable(data) {
     let coinName = [];
     let coinSymbol = [];
@@ -46,12 +48,72 @@ function init(){
 
 init();
 
-//handle next button
-let nextBtn = document.querySelector('a');
-let prevBtn = document.querySelector('.prev');
-let nextPage;
+//handle pagination
+let pageLinks = document.querySelectorAll('a');
+let activePageNumber;
+let clickedLink;
+let leftArrow;
+let rightArrow;
 let url = '';
 
-element.addEventListener("click", function(){
+pageLinks.forEach((element) => {
+    element.addEventListener('click',function (){
+        leftArrow = document.querySelector('.prev');
+        rightArrow = document.querySelector('.btn');
+        activeLink = document.querySelector('.active');
+        
+        //get active page number
+        
+    })
+})
 
-});
+
+
+function disablePrevBtn(){
+    document.getElementById('prev-btn').classList.add('hide');
+}
+
+function enablePrevBtn(){
+    document.getElementById('prev-btn').classList.remove('hide');
+}
+
+function handleNextBtnClick(){
+    let count = 2; 
+    let nextBtn = document.getElementById('next-btn');
+    nextBtn.onclick = function(){
+        count++;
+        console.log(count);
+    }
+    const url = getUrl((count * 10)-10);
+    getData(url);
+
+    if (count=>2){
+        enablePrevBtn();
+    }else {
+        disablePrevBtn();
+    }
+
+    // handlePrevBtnClick(count);
+
+    // if( count = 0){
+    //     disablePrevBtn();
+    // }else {
+    //     enablePrevBtn();
+    // }
+
+    
+}
+
+
+function handlePrevBtnClick(count){
+    let prevBtn = document.getElementById('prev-btn');
+    prevBtn.onclick = function(count){
+        count--;
+    }
+
+}
+ 
+
+
+//if page 1 hide next page
+// else show prev page 

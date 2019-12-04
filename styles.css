@@ -16,6 +16,8 @@ body {
     margin: 5.125rem auto 0 auto;
 }
 table {
+  width:400px;
+  height:400px;
   border-radius:1em;
   margin: 0 auto;
   border-collapse: collapse;
@@ -23,15 +25,16 @@ table {
   box-shadow: 3px 4px 5px 0px rgba(0,0,0,0.22);
   background-color: var(--color-white);
   border-radius: .3em;
-  width:10vw;
+  
+  
 }
 
 span::before{
 content: "\00a0  ";
 }
+
 table tr {
   display: grid;
-  min-width: 80vw;
   grid-template-columns:
     minmax(150px, 1.5fr)
     minmax(150px, 1fr)
@@ -39,6 +42,7 @@ table tr {
     minmax(150px, 1.5fr);
   text-align: left;
   padding: 0.5em;
+  /* padding-right:1.5em; */
 }
 
 /* thead > tr{
@@ -67,4 +71,8 @@ tfoot{
     text-decoration: none;
     cursor: pointer;
     padding-right:0.5em;
+}
+
+.hide{
+display: none;
 }
