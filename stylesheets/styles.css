@@ -1,0 +1,75 @@
+@import 'mobile.css';
+
+:root {
+  --color-white: #ffffff;
+  --color-grey: #efefef;
+}
+
+body {
+  background-color: rgb(220, 220, 220);
+  font-size: 15px;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Oxygen-Sans, Ubuntu, Cantarell, sans-serif;
+  /* width: 100vw; */
+  height: 100%;
+}
+
+table {
+  width: 550px;
+  height: 450px;
+  border-radius: 1em;
+  margin: 8em auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, 0.22);
+  background-color: var(--color-white);
+  border-radius: 0.3em;
+}
+
+span::before {
+  content: "\00a0  "; /* Ire says don't use content in CSS */
+}
+
+table tr {
+  display: grid;
+  grid-template-columns:
+  2.5fr 2fr 2.5fr 3.5fr;
+  /* minmax(150px, 1.5fr)
+    minmax(150px, 0.5fr)
+    minmax(150px, 1fr)
+    minmax(150px, 2.5fr); */
+
+  text-align: left;
+  padding: 0.5em;
+
+}
+
+tbody > tr:nth-child(odd) {
+  background-color: var(--color-grey);
+}
+
+tbody > tr:nth-child(even) {
+  background-color: var(--color-white);
+}
+
+tfoot {
+  background-color: var(--color-grey);
+}
+
+.btn-space {
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
+.hide {
+  display: none;
+}
+

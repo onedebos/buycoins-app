@@ -30,16 +30,27 @@ function loadDataIntoTable(data) {
 
   let tableBody = document.getElementById("crypto-table");
   let html = "";
+  let mobile = "";
   for (let i = 0; i < coinName.length; i++) {
+     
     html += "<tr>";
+    html += '<th class="hide">💰<span>Coin</span></th>';
+    html += '<th class="hide">📄<span>Code</span></th>';
     html += "<td>" + coinName[i] + "</td>";
     html += "<td>" + coinSymbol[i] + "</td>";
+    html += '<td class="hide"> </td>';
+    html += '<td class="hide"> </td>';
+    html += '<th class="hide">🤑<span>Price</span></th>';
+    html += '<th class="hide">📉<span>Total Supply</span></th>';
     html += "<td>" + "$" + " " + coinPrice[i] + "</td>";
     html += "<td>" + coinSupply[i] + " " + coinSymbol[i] + "</td>";
     html += "</tr>";
   }
 
+//   let join = html + mobile; 
   tableBody.innerHTML = html;
+
+
 }
 
 function init() {
@@ -67,7 +78,7 @@ function handleNextBtnClick() {
     count++;
     const url = getUrl(count * 10 - 10);
     getData(url);
-    console.log(count);
+
     if (count > 1) {
         enablePrevBtn();
       } else {
@@ -84,7 +95,7 @@ function handlePrevBtnClick() {
     count--;
     const url = getUrl(count * 10 - 10);
     getData(url);
-    console.log(count);
+
 
     if (count == 1){
         disablePrevBtn();
