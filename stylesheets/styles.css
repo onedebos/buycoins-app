@@ -1,4 +1,4 @@
-@import 'mobile.css';
+@import "mobile.css";
 
 :root {
   --color-white: #ffffff;
@@ -33,8 +33,7 @@ span::before {
 
 table tr {
   display: grid;
-  grid-template-columns:
-  2.5fr 2fr 2.5fr 3.5fr;
+  grid-template-columns: 2.5fr 2fr 2.5fr 3.5fr;
   /* minmax(150px, 1.5fr)
     minmax(150px, 0.5fr)
     minmax(150px, 1fr)
@@ -42,7 +41,6 @@ table tr {
 
   text-align: left;
   padding: 0.5em;
-
 }
 
 tbody > tr:nth-child(odd) {
@@ -66,10 +64,8 @@ tfoot {
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-
 }
 
 .hide {
   display: none;
 }
-

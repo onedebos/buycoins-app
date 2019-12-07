@@ -24,15 +24,9 @@ function loadDataIntoTable(data) {
     coinSupply.push(coin.tsupply);
   });
 
-
- 
-
-
   let tableBody = document.getElementById("crypto-table");
   let html = "";
-  let mobile = "";
   for (let i = 0; i < coinName.length; i++) {
-     
     html += "<tr>";
     html += '<th class="hide">💰<span>Coin</span></th>';
     html += '<th class="hide">📄<span>Code</span></th>';
@@ -47,10 +41,7 @@ function loadDataIntoTable(data) {
     html += "</tr>";
   }
 
-//   let join = html + mobile; 
   tableBody.innerHTML = html;
-
-
 }
 
 function init() {
@@ -71,7 +62,6 @@ function enablePrevBtn() {
 
 let count = 1;
 
-
 function handleNextBtnClick() {
   let nextBtn = document.getElementById("next-btn");
   nextBtn.onclick = function() {
@@ -80,32 +70,25 @@ function handleNextBtnClick() {
     getData(url);
 
     if (count > 1) {
-        enablePrevBtn();
-      } else {
-        disablePrevBtn();
-      }
-
-  }
+      enablePrevBtn();
+    } else {
+      disablePrevBtn();
+    }
+  };
 }
 
-
 function handlePrevBtnClick() {
-    let prevBtn = document.getElementById("prev-btn");
+  let prevBtn = document.getElementById("prev-btn");
   prevBtn.onclick = function() {
     count--;
     const url = getUrl(count * 10 - 10);
     getData(url);
 
-
-    if (count == 1){
-        disablePrevBtn();
+    if (count == 1) {
+      disablePrevBtn();
     }
-
   };
 }
 
 handleNextBtnClick();
 handlePrevBtnClick();
-
-//if page 1 hide next page
-// else show prev page
