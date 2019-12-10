@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="stylesheets/styles.css" />
+    <link
+      rel="stylesheet"
+      media="(max-width: 600px)"
+      href="stylesheets/mobile.css"
+    />
+    <title>Debs - BuyCoins App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <table>
+        <thead>
+          <tr class="primary">
+            <th>💰<span>Coin</span></th>
+            <th>📄<span>Code</span></th>
+            <th>🤑<span>Price</span></th>
+            <th>📉<span>Total Supply</span></th>
+          </tr>
+        </thead>
+        <tbody id="crypto-table"></tbody>
+        <tfoot>
+          <tr class="btn-space">
+            <td>
+              <a href="#" class="btn prev hide-prev" id="prev-btn">← Previous</a>
+            </td>
+            <td><a href="#" class="btn" id="next-btn">Next →</a></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

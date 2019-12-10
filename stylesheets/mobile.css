@@ -1,0 +1,44 @@
+@media only screen and (max-width: 600px) {
+  table tr {
+    display: grid;
+    grid-template-columns:
+      minmax(150px, 1fr)
+      minmax(150px, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+
+  table {
+    width: 550px;
+    margin: 0.5em 0;
+  }
+
+  .primary {
+    display: none;
+  }
+
+  .hide {
+    display: block;
+  }
+
+
+  .wrapper{
+    margin: 0 auto;
+  }
+
+}
+
+
+@media only screen and (max-width: 561px) {
+table{
+  width:450px;
+  }
+}
+
+@media only screen and (max-width: 444px) {
+  
+  table{
+    width:350px;
+  }
+
+
+}
