@@ -8,7 +8,8 @@
   }
 
   table {
-    margin: 1em auto;
+    width: 550px;
+    margin: 0.5em 0;
   }
 
   .primary {
@@ -19,7 +20,25 @@
     display: block;
   }
 
-  body {
-    background-color: red;
+
+  .wrapper{
+    margin: 0 auto;
   }
+
+}
+
+
+@media only screen and (max-width: 561px) {
+table{
+  width:450px;
+  }
+}
+
+@media only screen and (max-width: 444px) {
+  
+  table{
+    width:350px;
+  }
+
+
 }

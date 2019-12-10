@@ -53,42 +53,57 @@ init();
 
 //handle pagination
 function disablePrevBtn() {
-  document.getElementById("prev-btn").classList.add("hide");
+  document.getElementById("prev-btn").classList.add("hide-prev");
 }
 
 function enablePrevBtn() {
-  document.getElementById("prev-btn").classList.remove("hide");
+  document.getElementById("prev-btn").classList.remove("hide-prev");
 }
 
 let count = 1;
 
 function handleNextBtnClick() {
   let nextBtn = document.getElementById("next-btn");
-  nextBtn.onclick = function() {
-    count++;
-    const url = getUrl(count * 10 - 10);
-    getData(url);
 
-    if (count > 1) {
-      enablePrevBtn();
-    } else {
-      disablePrevBtn();
-    }
-  };
+  nextBtn.addEventListener('click', nextBtnEvent);
+   
 }
 
 function handlePrevBtnClick() {
+  
   let prevBtn = document.getElementById("prev-btn");
-  prevBtn.onclick = function() {
-    count--;
-    const url = getUrl(count * 10 - 10);
-    getData(url);
-
-    if (count == 1) {
-      disablePrevBtn();
-    }
-  };
+  prevBtn.addEventListener('click', prevBtnEvent);
+  if(count == 1){
+    disablePrevBtn();
+  }
 }
+
+function nextBtnEvent(e){
+  e.preventDefault();
+  count++;
+  const url = getUrl(count * 10 - 10);
+  getData(url);
+
+  if (count > 1) {
+    enablePrevBtn();
+  } else {
+    disablePrevBtn();
+  }
+}
+
+function prevBtnEvent(e){
+  e.preventDefault();
+  count--;
+  const url = getUrl(count * 10 - 10);
+  getData(url);
+
+  if (count == 1) {
+    disablePrevBtn();
+  }
+}
+
+
+
 
 handleNextBtnClick();
 handlePrevBtnClick();
