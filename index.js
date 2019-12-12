@@ -65,20 +65,18 @@ let count = 1;
 function handleNextBtnClick() {
   let nextBtn = document.getElementById("next-btn");
 
-  nextBtn.addEventListener('click', nextBtnEvent);
-   
+  nextBtn.addEventListener("click", nextBtnEvent);
 }
 
 function handlePrevBtnClick() {
-  
   let prevBtn = document.getElementById("prev-btn");
-  prevBtn.addEventListener('click', prevBtnEvent);
-  if(count == 1){
+  prevBtn.addEventListener("click", prevBtnEvent);
+  if (count == 1) {
     disablePrevBtn();
   }
 }
 
-function nextBtnEvent(e){
+function nextBtnEvent(e) {
   e.preventDefault();
   count++;
   const url = getUrl(count * 10 - 10);
@@ -91,7 +89,7 @@ function nextBtnEvent(e){
   }
 }
 
-function prevBtnEvent(e){
+function prevBtnEvent(e) {
   e.preventDefault();
   count--;
   const url = getUrl(count * 10 - 10);
@@ -101,9 +99,6 @@ function prevBtnEvent(e){
     disablePrevBtn();
   }
 }
-
-
-
 
 handleNextBtnClick();
 handlePrevBtnClick();

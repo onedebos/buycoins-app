@@ -20,25 +20,19 @@
     display: block;
   }
 
-
-  .wrapper{
+  .wrapper {
     margin: 0 auto;
   }
-
 }
 
-
 @media only screen and (max-width: 561px) {
-table{
-  width:450px;
+  table {
+    width: 450px;
   }
 }
 
 @media only screen and (max-width: 444px) {
-  
-  table{
-    width:350px;
+  table {
+    width: 350px;
   }
-
-
 }
