@@ -1,17 +1,17 @@
-function getUrl(start = 0) {
+function getUrl(start = 0){
   return "https://api.coinlore.com/api/tickers/?start=" + start + "&limit=10";
 }
 
 //grab data
-function getData(url) {
+const getData = url => {
   fetch(url)
     .then(response => response.json())
     .then(data => loadDataIntoTable(data))
     .catch(err => console.log(err));
-}
+};
 
 // load data into table
-function loadDataIntoTable(data) {
+const loadDataIntoTable = data => {
   let coinName = [];
   let coinSymbol = [];
   let coinPrice = [];
@@ -42,63 +42,68 @@ function loadDataIntoTable(data) {
   }
 
   tableBody.innerHTML = html;
-}
+};
 
-function init() {
+const init = () => {
   const url = getUrl();
   getData(url);
-}
+};
 
 init();
 
 //handle pagination
-function disablePrevBtn() {
-  document.getElementById("prev-btn").classList.add("hide-prev");
-}
+const Pagination = () => {
+  let count = 1;
+  const disablePrevBtn = () =>
+    document.getElementById("prev-btn").classList.add("hide-prev");
+  const enablePrevBtn = () =>
+    document.getElementById("prev-btn").classList.remove("hide-prev");
+  const handleNextBtnClick = () => {
+    let nextBtn = document.getElementById("next-btn");
+    nextBtn.addEventListener("click", nextBtnEvent);
+  };
+  const handlePrevBtnClick = () => {
+    let prevBtn = document.getElementById("prev-btn");
+    prevBtn.addEventListener("click", prevBtnEvent);
+    if (count == 1) {
+      disablePrevBtn();
+    }
+  };
 
-function enablePrevBtn() {
-  document.getElementById("prev-btn").classList.remove("hide-prev");
-}
+  const nextBtnEvent = e => {
+    e.preventDefault();
+    count++;
+    const url = getUrl(count * 10 - 10);
+    getData(url);
 
-let count = 1;
+    if (count > 1) {
+      enablePrevBtn();
+    } else {
+      disablePrevBtn();
+    }
+  };
 
-function handleNextBtnClick() {
-  let nextBtn = document.getElementById("next-btn");
+  const prevBtnEvent = e => {
+    e.preventDefault();
+    count--;
+    const url = getUrl(count * 10 - 10);
+    getData(url);
 
-  nextBtn.addEventListener("click", nextBtnEvent);
-}
+    if (count == 1) {
+      disablePrevBtn();
+    }
+  };
 
-function handlePrevBtnClick() {
-  let prevBtn = document.getElementById("prev-btn");
-  prevBtn.addEventListener("click", prevBtnEvent);
-  if (count == 1) {
-    disablePrevBtn();
-  }
-}
+  return {
+    disablePrevBtn,
+    handlePrevBtnClick,
+    enablePrevBtn,
+    handleNextBtnClick,
+    nextBtnEvent,
+    prevBtnEvent
+  };
+};
 
-function nextBtnEvent(e) {
-  e.preventDefault();
-  count++;
-  const url = getUrl(count * 10 - 10);
-  getData(url);
-
-  if (count > 1) {
-    enablePrevBtn();
-  } else {
-    disablePrevBtn();
-  }
-}
-
-function prevBtnEvent(e) {
-  e.preventDefault();
-  count--;
-  const url = getUrl(count * 10 - 10);
-  getData(url);
-
-  if (count == 1) {
-    disablePrevBtn();
-  }
-}
-
-handleNextBtnClick();
-handlePrevBtnClick();
+const runPagination = Pagination();
+runPagination.handleNextBtnClick();
+runPagination.handlePrevBtnClick();
