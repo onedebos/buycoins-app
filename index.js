@@ -1,17 +1,17 @@
-const getUrl = (start = 0) => {
+function getUrl(start = 0){
   return "https://api.coinlore.com/api/tickers/?start=" + start + "&limit=10";
 }
 
 //grab data
-const getData = (url) => {
+const getData = url => {
   fetch(url)
     .then(response => response.json())
     .then(data => loadDataIntoTable(data))
     .catch(err => console.log(err));
-}
+};
 
 // load data into table
-const loadDataIntoTable = (data) => {
+const loadDataIntoTable = data => {
   let coinName = [];
   let coinSymbol = [];
   let coinPrice = [];
@@ -42,59 +42,67 @@ const loadDataIntoTable = (data) => {
   }
 
   tableBody.innerHTML = html;
-}
+};
 
 const init = () => {
   const url = getUrl();
   getData(url);
-}
+};
 
 init();
 
 //handle pagination
 const Pagination = () => {
   let count = 1;
-  const disablePrevBtn = () => document.getElementById("prev-btn").classList.add("hide-prev");
-  const enablePrevBtn = () => document.getElementById("prev-btn").classList.remove("hide-prev");
+  const disablePrevBtn = () =>
+    document.getElementById("prev-btn").classList.add("hide-prev");
+  const enablePrevBtn = () =>
+    document.getElementById("prev-btn").classList.remove("hide-prev");
   const handleNextBtnClick = () => {
     let nextBtn = document.getElementById("next-btn");
     nextBtn.addEventListener("click", nextBtnEvent);
-  }
+  };
   const handlePrevBtnClick = () => {
     let prevBtn = document.getElementById("prev-btn");
     prevBtn.addEventListener("click", prevBtnEvent);
     if (count == 1) {
       disablePrevBtn();
     }
-  }
-  
-  const nextBtnEvent = (e) => {
+  };
+
+  const nextBtnEvent = e => {
     e.preventDefault();
     count++;
     const url = getUrl(count * 10 - 10);
     getData(url);
-  
+
     if (count > 1) {
       enablePrevBtn();
     } else {
       disablePrevBtn();
     }
-  }
-  
-  const prevBtnEvent = (e) => {
+  };
+
+  const prevBtnEvent = e => {
     e.preventDefault();
     count--;
     const url = getUrl(count * 10 - 10);
     getData(url);
-  
+
     if (count == 1) {
       disablePrevBtn();
     }
-  }
+  };
 
-  return {disablePrevBtn, handlePrevBtnClick, enablePrevBtn, handleNextBtnClick, nextBtnEvent, prevBtnEvent};
+  return {
+    disablePrevBtn,
+    handlePrevBtnClick,
+    enablePrevBtn,
+    handleNextBtnClick,
+    nextBtnEvent,
+    prevBtnEvent
+  };
 };
-
 
 const runPagination = Pagination();
 runPagination.handleNextBtnClick();
